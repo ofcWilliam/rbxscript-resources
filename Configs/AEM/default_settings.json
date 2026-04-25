@@ -3,7 +3,7 @@
         "Prefix": "!",
         "EmoteMenuKeybind": "Comma",
         "CmdBarKeybind": "F4",
-        "Theme": "Dark",
+        "Theme": "DefaultDarkBlue",
         "Notifications": true
     },
     "ExtraScripts": {
