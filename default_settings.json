@@ -1,0 +1,18 @@
+{
+    "Configuration": {
+        "Prefix": "!",
+        "EmoteMenuKeybind": "Comma",
+        "CmdBarKeybind": "F4",
+        "Theme": "Dark",
+        "Notifications": true
+    },
+    "ExtraScripts": {
+        "LoadInfiniteYield": true
+    },
+    "Debugging": {
+        "Enabled": false,
+        "VerboseLogging": false,
+        "LogToFile": true,
+        "PrintCommandUsage": true
+    }
+}
