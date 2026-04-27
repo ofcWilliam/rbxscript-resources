@@ -6,6 +6,9 @@
         "Theme": "DefaultDarkBlue",
         "Notifications": true
     },
+    "Features": {
+        "ReturnOnDeath": true
+    },
     "ExtraScripts": {
         "LoadInfiniteYield": true
     },
