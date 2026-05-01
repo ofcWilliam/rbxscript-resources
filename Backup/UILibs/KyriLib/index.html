@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>KyriLib - Roblox UI Library Documentation</title>
+	<meta name="description" content="KyriLib is a Roblox executor UI library with toggles, sliders, dropdowns, color pickers, keybinds, preset themes, and a built-in config system.">
+	<meta name="keywords" content="KyriLib, Roblox UI library, Roblox executor script, Roblox GUI library, Roblox script UI">
+	<meta name="robots" content="index, follow">
+	<link rel="canonical" href="https://justanewplayer19.github.io/KyriLib/">
+
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://justanewplayer19.github.io/KyriLib/">
+	<meta property="og:title" content="KyriLib - Roblox UI Library">
+	<meta property="og:description" content="A Roblox executor UI library with smooth animations, preset themes, color pickers, keybinds, and a built-in config system.">
+	<meta property="og:image" content="https://raw.githubusercontent.com/Justanewplayer19/KyriLib/refs/heads/main/favicon.png">
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="KyriLib - Roblox UI Library">
+	<meta name="twitter:description" content="A Roblox executor UI library with smooth animations, preset themes, color pickers, keybinds, and a built-in config system.">
+	<meta name="twitter:image" content="https://raw.githubusercontent.com/Justanewplayer19/KyriLib/refs/heads/main/favicon.png">
+
+	<link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/Justanewplayer19/KyriLib/refs/heads/main/favicon.png">
+
+	<script>
+		if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+			document.documentElement.style.background = '#1b1b1d';
+			document.documentElement.style.colorScheme = 'dark';
+		}
+	</script>
+
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "SoftwareSourceCode",
+		"name": "KyriLib",
+		"description": "A Roblox executor UI library with toggles, sliders, dropdowns, color pickers, keybinds, preset themes, and a built-in config system.",
+		"url": "https://justanewplayer19.github.io/KyriLib/",
+		"codeRepository": "https://github.com/Justanewplayer19/KyriLib",
+		"programmingLanguage": "Lua",
+		"runtimePlatform": "Roblox",
+		"license": "https://opensource.org/licenses/MIT",
+		"author": {
+			"@type": "Person",
+			"name": "Justanewplayer19"
+		}
+	}
+	</script>
+
+	<style>
+		html, body {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			max-width: 100%;
+			overflow-x: hidden;
+		}
+
+body {
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+			background: #ffffff;
+			color: #1c1e21;
+			transition: background 0.3s, color 0.3s;
+		}
+
+		body.dark {
+			background: #1b1b1d;
+			color: #e3e3e3;
+		}
+
+		.navbar {
+			height: 60px;
+			background: #ffffff;
+			border-bottom: 1px solid #e3e3e3;
+			display: flex;
+			align-items: center;
+			padding: 0 20px;
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 100;
+			transition: background 0.3s, border-color 0.3s;
+		}
+
+		body.dark .navbar {
+			background: #1b1b1d;
+			border-bottom: 1px solid #2d2d2f;
+		}
+
+		.navbar-brand {
+			font-size: 20px;
+			font-weight: 600;
+			color: #1c1e21;
+			text-decoration: none;
+		}
+
+		body.dark .navbar-brand {
+			color: #e3e3e3;
+		}
+
+		.navbar-links {
+			margin-left: auto;
+			display: flex;
+			gap: 20px;
+			align-items: center;
+		}
+
+		.menu-toggle {
+			display: none;
+			background: transparent;
+			border: 1px solid #e3e3e3;
+			padding: 6px 12px;
+			border-radius: 6px;
+			cursor: pointer;
+			font-size: 14px;
+			color: #525860;
+			margin-right: 20px;
+		}
+
+		body.dark .menu-toggle {
+			border-color: #2d2d2f;
+			color: #a8a8a8;
+		}
+
+		@media (max-width: 996px) {
+			.menu-toggle {
+				display: block;
+			}
+		}
+
+		.navbar-links a {
+			color: #525860;
+			text-decoration: none;
+			font-size: 15px;
+		}
+
+		body.dark .navbar-links a {
+			color: #a8a8a8;
+		}
+
+		.navbar-links a:hover {
+			color: #1c1e21;
+		}
+
+		body.dark .navbar-links a:hover {
+			color: #e3e3e3;
+		}
+
+		.theme-toggle {
+			background: transparent;
+			border: 1px solid #e3e3e3;
+			padding: 6px 12px;
+			border-radius: 6px;
+			cursor: pointer;
+			font-size: 14px;
+			color: #525860;
+			transition: all 0.3s;
+		}
+
+		body.dark .theme-toggle {
+			border-color: #2d2d2f;
+			color: #a8a8a8;
+		}
+
+		.theme-toggle:hover {
+			background: #f6f8fa;
+		}
+
+		body.dark .theme-toggle:hover {
+			background: #2d2d2f;
+		}
+
+		.container {
+			display: flex;
+			margin-top: 60px;
+		}
+
+		.sidebar {
+			width: 280px;
+			background: #f7f7f7;
+			height: calc(100vh - 60px);
+			position: fixed;
+			overflow-y: auto;
+			border-right: 1px solid #e3e3e3;
+			padding: 20px 0;
+			transition: background 0.3s, border-color 0.3s, transform 0.3s;
+			z-index: 50;
+		}
+
+		body.dark .sidebar {
+			background: #18181a;
+			border-right: 1px solid #2d2d2f;
+		}
+
+		@media (max-width: 996px) {
+			.sidebar {
+				transform: translateX(-100%);
+			}
+
+			.sidebar.active {
+				transform: translateX(0);
+			}
+		}
+
+		.sidebar-section {
+			margin-bottom: 24px;
+		}
+
+		.sidebar-title {
+			font-size: 11px;
+			font-weight: 700;
+			text-transform: uppercase;
+			color: #8c8c8c;
+			padding: 0 20px;
+			margin-bottom: 8px;
+			letter-spacing: 0.5px;
+		}
+
+		body.dark .sidebar-title {
+			color: #6e6e6e;
+		}
+
+		.sidebar-link {
+			display: block;
+			padding: 6px 20px;
+			color: #525860;
+			text-decoration: none;
+			font-size: 14px;
+			transition: all 0.2s;
+		}
+
+		body.dark .sidebar-link {
+			color: #a8a8a8;
+		}
+
+		.sidebar-link:hover {
+			background: #e8e8e8;
+			color: #1c1e21;
+		}
+
+		body.dark .sidebar-link:hover {
+			background: #2d2d2f;
+			color: #e3e3e3;
+		}
+
+		.sidebar-link.active {
+			color: #8a74f9;
+			font-weight: 500;
+			border-left: 2px solid #8a74f9;
+			background: #ffffff;
+		}
+
+		body.dark .sidebar-link.active {
+			background: #1b1b1d;
+		}
+
+		.content {
+			margin-left: 280px;
+			padding: 40px;
+			max-width: 1000px;
+			width: 100%;
+			min-height: 100vh;
+			box-sizing: border-box;
+			min-width: 0;
+		}
+
+		@media (max-width: 996px) {
+			.content {
+				margin-left: 0;
+				padding: 20px;
+				width: 100%;
+				max-width: 100vw;
+			}
+
+			.sidebar {
+				width: 250px;
+			}
+		}
+
+		h1 {
+			font-size: 40px;
+			font-weight: 700;
+			margin-bottom: 20px;
+			color: #1c1e21;
+		}
+
+		body.dark h1 {
+			color: #e3e3e3;
+		}
+
+		h2 {
+			font-size: 32px;
+			font-weight: 600;
+			margin-top: 48px;
+			margin-bottom: 16px;
+			color: #1c1e21;
+			padding-bottom: 8px;
+			border-bottom: 1px solid #e3e3e3;
+		}
+
+		body.dark h2 {
+			color: #e3e3e3;
+			border-bottom: 1px solid #2d2d2f;
+		}
+
+		h3 {
+			font-size: 24px;
+			font-weight: 600;
+			margin-top: 32px;
+			margin-bottom: 12px;
+			color: #1c1e21;
+		}
+
+		body.dark h3 {
+			color: #e3e3e3;
+		}
+
+		h4 {
+			font-size: 18px;
+			font-weight: 600;
+			margin-top: 24px;
+			margin-bottom: 8px;
+			color: #1c1e21;
+		}
+
+		body.dark h4 {
+			color: #e3e3e3;
+		}
+
+		p {
+			line-height: 1.7;
+			margin-bottom: 16px;
+			color: #525860;
+		}
+
+		body.dark p {
+			color: #a8a8a8;
+		}
+
+		code {
+			background: #f6f8fa;
+			padding: 2px 6px;
+			border-radius: 3px;
+			font-family: 'Courier New', monospace;
+			font-size: 14px;
+			color: #e83e8c;
+			word-break: break-word;
+			overflow-wrap: break-word;
+		}
+
+		body.dark code {
+			background: #2d2d2f;
+			color: #ff79c6;
+		}
+
+		.pre-wrapper {
+			position: relative;
+			margin: 16px 0;
+			max-width: 100%;
+		}
+
+		pre {
+			background: #f6f8fa;
+			padding: 16px;
+			border-radius: 6px;
+			overflow-x: auto;
+			margin: 0;
+			border: 1px solid #e3e3e3;
+			max-width: 100%;
+			box-sizing: border-box;
+		}
+
+		body.dark pre {
+			background: #2d2d2f;
+			border: 1px solid #3d3d3f;
+		}
+
+		.copy-button {
+			position: absolute;
+			top: 8px;
+			right: 8px;
+			background: #ffffff;
+			color: #1c1e21;
+			border: 1px solid #e3e3e3;
+			padding: 6px;
+			border-radius: 4px;
+			cursor: pointer;
+			opacity: 0;
+			transition: opacity 0.2s, background 0.2s;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		body.dark .copy-button {
+			background: #1b1b1d;
+			color: #e3e3e3;
+			border: 1px solid #2d2d2f;
+		}
+
+		.pre-wrapper:hover .copy-button {
+			opacity: 1;
+		}
+
+		.copy-button:hover {
+			background: #f6f8fa;
+		}
+
+		body.dark .copy-button:hover {
+			background: #2d2d2f;
+		}
+
+		.copy-button.copied {
+			background: #4caf50;
+			color: white;
+			border-color: #4caf50;
+		}
+
+		.copy-icon {
+			width: 16px;
+			height: 16px;
+		}
+
+		pre code {
+			background: none;
+			padding: 0;
+			color: #1c1e21;
+		}
+
+		body.dark pre code {
+			color: #e3e3e3;
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin: 20px 0;
+			font-size: 14px;
+		}
+
+		th, td {
+			padding: 12px;
+			text-align: left;
+			border: 1px solid #e3e3e3;
+		}
+
+		body.dark th, body.dark td {
+			border: 1px solid #2d2d2f;
+		}
+
+		th {
+			background: #f6f8fa;
+			font-weight: 600;
+		}
+
+		body.dark th {
+			background: #2d2d2f;
+		}
+
+		.admonition {
+			padding: 16px;
+			margin: 20px 0;
+			border-radius: 6px;
+			border-left: 4px solid;
+		}
+
+		.admonition-info {
+			background: #e7f2ff;
+			border-color: #2196f3;
+		}
+
+		body.dark .admonition-info {
+			background: #1a2a3a;
+			border-color: #2196f3;
+		}
+
+		.admonition-warning {
+			background: #fff4e5;
+			border-color: #ff9800;
+		}
+
+		body.dark .admonition-warning {
+			background: #2a2410;
+			border-color: #ff9800;
+		}
+
+		.admonition-title {
+			font-weight: 600;
+			margin-bottom: 8px;
+		}
+
+		ul {
+			margin: 16px 0;
+			padding-left: 24px;
+		}
+
+		li {
+			margin: 8px 0;
+			line-height: 1.7;
+			color: #525860;
+		}
+
+		body.dark li {
+			color: #a8a8a8;
+		}
+
+		a {
+			color: #8a74f9;
+			text-decoration: none;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+
+		.button {
+			display: inline-block;
+			padding: 10px 24px;
+			background: #ffffff;
+			color: #1c1e21;
+			text-decoration: none;
+			border-radius: 6px;
+			font-weight: 500;
+			margin-right: 12px;
+			margin-top: 12px;
+			border: 1px solid #e3e3e3;
+		}
+
+		body.dark .button {
+			background: #1b1b1d;
+			color: #e3e3e3;
+			border: 1px solid #2d2d2f;
+		}
+
+		.button:hover {
+			background: #f6f8fa;
+			text-decoration: none;
+		}
+
+		body.dark .button:hover {
+			background: #2d2d2f;
+		}
+
+		.button-outline {
+			background: transparent;
+			border: 1px solid #e3e3e3;
+			color: #1c1e21;
+		}
+
+		body.dark .button-outline {
+			border: 1px solid #2d2d2f;
+			color: #e3e3e3;
+		}
+
+		.button-outline:hover {
+			background: #f6f8fa;
+		}
+
+		body.dark .button-outline:hover {
+			background: #2d2d2f;
+		}
+
+		section {
+			scroll-margin-top: 80px;
+		}
+
+		.mobile-overlay {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: rgba(0, 0, 0, 0.5);
+			z-index: 40;
+		}
+
+		.mobile-overlay.active {
+			display: block;
+		}
+
+		body.sidebar-open {
+			overflow: hidden;
+		}
+
+		@media (max-width: 996px) {
+			.navbar-links a {
+				display: none;
+			}
+
+			.navbar-brand {
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%);
+			}
+		}
+
+		@media (max-width: 768px) {
+			h1 {
+				font-size: 26px;
+				margin-bottom: 14px;
+			}
+
+			h2 {
+				font-size: 20px;
+				margin-top: 32px;
+				margin-bottom: 12px;
+			}
+
+			h3 {
+				font-size: 17px;
+				margin-top: 24px;
+			}
+
+			h4 {
+				font-size: 15px;
+			}
+
+			.content {
+				padding: 16px;
+			}
+
+			table {
+				display: block;
+				overflow-x: auto;
+				-webkit-overflow-scrolling: touch;
+				white-space: nowrap;
+			}
+
+			pre {
+				font-size: 12px;
+				padding: 12px;
+			}
+
+			.button {
+				display: block;
+				margin-right: 0;
+				margin-bottom: 8px;
+				text-align: center;
+			}
+
+			.admonition p {
+				word-break: break-word;
+			}
+
+			.copy-button {
+				opacity: 1;
+			}
+		}
+	</style>
+</head>
+<body>
+	<nav class="navbar">
+		<button class="menu-toggle" onclick="toggleSidebar()">☰ menu</button>
+		<a href="#" class="navbar-brand">KyriLib</a>
+		<div class="navbar-links">
+			<a href="#introduction">docs</a>
+			<a href="https://github.com/Justanewplayer19/KyriLib">github</a>
+			<button class="theme-toggle" onclick="toggleTheme()">good morning</button>
+		</div>
+	</nav>
+
+	<div class="mobile-overlay" onclick="toggleSidebar()"></div>
+
+	<div class="container">
+		<aside class="sidebar">
+			<div class="sidebar-section">
+				<div class="sidebar-title">getting started</div>
+				<a href="#introduction" class="sidebar-link active">introduction</a>
+				<a href="#installation" class="sidebar-link">installation</a>
+				<a href="#basic-usage" class="sidebar-link">basic usage</a>
+			</div>
+
+			<div class="sidebar-section">
+				<div class="sidebar-title">api reference</div>
+				<a href="#window" class="sidebar-link">window</a>
+				<a href="#tabs" class="sidebar-link">tabs</a>
+				<a href="#elements" class="sidebar-link">elements</a>
+				<a href="#keybinds" class="sidebar-link">keybinds</a>
+				<a href="#notifications" class="sidebar-link">notifications</a>
+				<a href="#themes" class="sidebar-link">themes</a>
+				<a href="#config" class="sidebar-link">config system</a>
+			</div>
+
+			<div class="sidebar-section">
+				<div class="sidebar-title">examples</div>
+				<a href="#complete-example" class="sidebar-link">complete example</a>
+			</div>
+		</aside>
+
+		<main class="content">
+			<section id="introduction">
+				<h1>KyriLib - Roblox UI Library</h1>
+				<p>KyriLib is a lightweight Roblox UI library built for executor scripts. it gives you a fully featured window with tabs, elements, animations, and a built-in config system in a single loadstring.</p>
+				<p>most Roblox GUI libraries are bloated or painful to theme. KyriLib keeps it clean: dark base, 5 preset themes, per-property color pickers in the Settings tab, and a config save/load system that works out of the box with no extra setup.</p>
+
+				<a href="#installation" class="button">get started</a>
+				<a href="https://github.com/Justanewplayer19/KyriLib" class="button button-outline">github</a>
+
+				<h2>what is a Roblox UI library?</h2>
+				<p>a Roblox UI library is a tool that lets developers create graphical interfaces like menus, buttons, sliders, and dropdowns inside their scripts without building everything from scratch. instead of writing hundreds of lines of Roblox GUI code by hand, you load one script and call simple functions to build your interface.</p>
+				<p>KyriLib is built specifically for executor scripts. it handles all the rendering, theming, input handling, and config saving so you can focus on writing the actual features of your script.</p>
+
+				<h2>why KyriLib</h2>
+				<ul>
+					<li>one loadstring, everything included</li>
+					<li>built-in config system with auto-load on startup</li>
+					<li>5 preset themes plus a full per-property theme editor</li>
+					<li>works on mobile and desktop executors</li>
+					<li>1,000+ built-in icons via Lucide</li>
+					<li>no dependencies, no external UI frameworks</li>
+				</ul>
+
+				<h2>features</h2>
+				<ul>
+					<li>buttons, toggles, sliders, inputs, dropdowns, multiselects, color pickers, keybinds</li>
+					<li>progress bars and image elements</li>
+					<li>searchable dropdowns</li>
+					<li>sliders with draggable track and click-to-type value input</li>
+					<li>notifications with timer bar and click-to-dismiss</li>
+					<li>5 built-in preset themes, full per-property theme editor in Settings</li>
+					<li>built-in save/load config system with auto-load support</li>
+					<li>draggable and resizable window</li>
+					<li>keybind system with press or hold modes, supports mouse buttons</li>
+					<li>tab icons via 1,000+ lucideblox names, rbxassetid://, rbxthumb://, or https://</li>
+					<li>mobile support</li>
+				</ul>
+			</section>
+
+			<section id="installation">
+				<h2>installation</h2>
+				<pre><code>local kyri = loadstring(game:HttpGet("https://raw.githubusercontent.com/Justanewplayer19/KyriLib/refs/heads/main/source.lua"))()</code></pre>
+			</section>
+
+			<section id="basic-usage">
+				<h2>basic usage</h2>
+				<pre><code>local kyri = loadstring(game:HttpGet("https://raw.githubusercontent.com/Justanewplayer19/KyriLib/refs/heads/main/source.lua"))()
+
+local w = kyri.new("my script", {
+    GameName = "MyGame",
+    AutoLoad = "default"
+})
+
+local main = w:tab("Main", "sword")
+
+main:button("click me", function()
+    w:notify("hey", "button works", 2)
+end)
+
+main:toggle("enable thing", false, function(state)
+    print(state)
+end, "thing")
+
+main:slider("walkspeed", 0, 500, 16, function(val)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = val
+end, "ws")</code></pre>
+			</section>
+
+			<section id="window">
+				<h2>window</h2>
+
+				<h3>kyri.new(title, options)</h3>
+				<table>
+					<thead>
+						<tr><th>option</th><th>type</th><th>description</th></tr>
+					</thead>
+					<tbody>
+						<tr><td>GameName</td><td>string</td><td>used for config file storage</td></tr>
+						<tr><td>AutoLoad</td><td>string</td><td>config name to load on startup</td></tr>
+						<tr><td>Theme</td><td>table</td><td>override theme colors at init (any subset)</td></tr>
+					</tbody>
+				</table>
+
+				<pre><code>local w = kyri.new("my script", {
+    GameName = "MyGame",
+    AutoLoad = "default",
+    Theme = {
+        accent = Color3.fromRGB(255, 110, 150)
+    }
+})</code></pre>
+
+				<h3>window methods</h3>
+				<pre><code>w:tab(name, icon)              -- create tab, returns tab object
+w:notify(title, text, duration) -- send notification
+w:accent(color)                -- change accent color live
+w:apply_theme(overrides)       -- change any theme colors live
+w:destroy()                    -- destroy the window</code></pre>
+
+				<h3>toggle visibility</h3>
+				<p>press <code>RightControl</code> to show/hide the window.</p>
+			</section>
+
+			<section id="tabs">
+				<h2>tabs</h2>
+
+				<pre><code>w:tab(name, icon)</code></pre>
+
+				<p>icon accepts a <strong>LucideBlox name</strong>, a raw <code>rbxassetid://</code>, a <code>rbxthumb://</code>, or an <code>https://</code> URL:</p>
+				<pre><code>w:tab("Combat",   "crosshair")                  -- lucide icon name
+w:tab("Players",  "users")
+w:tab("Settings", "settings-2")
+w:tab("Custom",   "rbxassetid://7734053495")    -- raw roblox asset id
+w:tab("Thumb",    "rbxthumb://type=Asset&id=123&w=150&h=150")
+w:tab("Web",      "https://example.com/icon.png") -- https url (see note below)</code></pre>
+
+				<div class="admonition admonition-info">
+					<div class="admonition-title">lucideblox icon pack</div>
+					<p>1,000+ <a href="https://lucide.dev/icons" target="_blank">Lucide icons</a> are built in. Pass the icon name as a string exactly as it appears on lucide.dev, e.g. <code>"arrow-up-right"</code>, <code>"battery-charging"</code>, <code>"shield-check"</code>.</p>
+					<p>Common names: <code>sword</code> &bull; <code>axe</code> &bull; <code>skull</code> &bull; <code>flame</code> &bull; <code>shield</code> &bull; <code>crosshair</code> &bull; <code>target</code> &bull; <code>eye</code> &bull; <code>ghost</code> &bull; <code>users</code> &bull; <code>user</code> &bull; <code>crown</code> &bull; <code>star</code> &bull; <code>heart</code> &bull; <code>settings</code> &bull; <code>settings-2</code> &bull; <code>sliders</code> &bull; <code>wrench</code> &bull; <code>key</code> &bull; <code>lock</code> &bull; <code>map-pin</code> &bull; <code>compass</code> &bull; <code>home</code> &bull; <code>search</code> &bull; <code>filter</code> &bull; <code>list</code> &bull; <code>grid</code> &bull; <code>music</code> &bull; <code>mic</code> &bull; <code>wifi</code> &bull; <code>monitor</code> &bull; <code>camera</code> &bull; <code>video</code> &bull; <code>file</code> &bull; <code>folder</code> &bull; <code>download</code> &bull; <code>upload</code> &bull; <code>save</code> &bull; <code>trash</code> &bull; <code>edit</code> &bull; <code>bell</code> &bull; <code>clock</code> &bull; <code>info</code> &bull; <code>alert-triangle</code> &bull; <code>check</code> &bull; <code>x</code> &bull; <code>plus</code> &bull; <code>terminal</code> &bull; <code>bot</code> &bull; <code>gamepad</code> &bull; <code>gamepad-2</code></p>
+				</div>
+
+				<div class="admonition admonition-info">
+					<div class="admonition-title">https:// urls</div>
+					<p>When you pass an <code>https://</code> URL, KyriLib downloads the image in the background using the executor's <code>request()</code> function, caches it to disk, and loads it via <code>getcustomasset()</code>. The icon appears once the download finishes. Requires an executor that supports <code>request()</code> and <code>getcustomasset()</code> (Wave, Volt, Madium, etc.).</p>
+				</div>
+			</section>
+
+			<section id="elements">
+				<h2>elements</h2>
+
+				<h3>button</h3>
+				<pre><code>tab:button(text, callback)</code></pre>
+
+				<h3>toggle</h3>
+				<pre><code>tab:toggle(text, default, callback, flag)
+-- api: :set(state), :get(), :setcallback(fn)</code></pre>
+
+				<h3>slider</h3>
+				<pre><code>tab:slider(text, min, max, default, callback, flag, step)
+-- step is optional. e.g. 0.1 for one decimal place, 0.25 for quarter steps
+-- drag the track, or click the value label on the right to type a number directly
+-- api: :set(val), :get(), :setcallback(fn)</code></pre>
+
+				<pre><code>main:slider("walkspeed", 0, 500, 16, function(val)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = val
+end, "ws")
+
+main:slider("fov", 70, 120, 70, function(val)
+    -- decimal slider, step 0.1
+end, "fov", 0.1)</code></pre>
+
+				<h3>input</h3>
+				<pre><code>tab:input(text, placeholder, callback, flag)
+-- api: .input (the TextBox instance)</code></pre>
+
+				<h3>dropdown</h3>
+				<pre><code>tab:dropdown(text, options, default, callback, flag)
+-- searchable: type in the box to filter options
+-- api: :set(val)</code></pre>
+
+				<h3>multiselect</h3>
+				<pre><code>tab:multiselect(text, options, default, callback, flag)
+-- callback receives a table of selected values
+-- api: :set(val)</code></pre>
+
+				<h3>color picker</h3>
+				<pre><code>tab:colorpicker(text, default, callback, flag)
+-- HSV picker, click the swatch to open
+-- api: :set(color), :get()</code></pre>
+
+				<h3>keybind</h3>
+				<pre><code>tab:keybind(text, default, hold_to_interact, callback, flag)
+-- click the box and press any key to rebind</code></pre>
+
+				<h3>progress bar</h3>
+				<pre><code>local pb = tab:progressbar(text, max)
+pb:set(value, animated)   -- animated is optional boolean</code></pre>
+
+				<h3>image</h3>
+				<pre><code>tab:image(asset_id, height)   -- height defaults to 120</code></pre>
+
+				<h3>layout helpers</h3>
+				<pre><code>tab:section(text)              -- divider with label
+tab:label(text)                -- plain text line
+tab:paragraph(title, body)     -- titled text block
+tab:space(height)              -- empty gap, default 8px</code></pre>
+			</section>
+
+			<section id="keybinds">
+				<h2>keybinds</h2>
+
+				<h4>press to trigger</h4>
+				<pre><code>main:keybind("fly key", "Q", false, function()
+    -- fires once on press
+end, "fly_key")</code></pre>
+
+				<h4>hold to activate</h4>
+				<pre><code>main:keybind("speed boost", "LeftShift", true, function(holding)
+    if holding then
+        -- key held down
+    else
+        -- key released
+    end
+end, "boost_key")</code></pre>
+
+				<div class="admonition admonition-info">
+					<div class="admonition-title">info</div>
+					<p>click the keybind element and press any key to rebind. saved to config automatically if flag is provided.</p>
+				</div>
+			</section>
+
+			<section id="notifications">
+				<h2>notifications</h2>
+
+				<pre><code>w:notify(title, text, duration)</code></pre>
+
+				<p>notifications slide in from the right with a timer bar that drains over the duration. click a notification to dismiss it early.</p>
+
+				<pre><code>w:notify("done", "script loaded", 2)
+w:notify("error", "something went wrong", 5)</code></pre>
+			</section>
+
+			<section id="themes">
+				<h2>themes</h2>
+
+				<h3>preset themes</h3>
+				<p>5 built-in presets: <code>kyri</code>, <code>midnight</code>, <code>rose</code>, <code>forest</code>, <code>slate</code></p>
+				<pre><code>w:apply_theme(kyri.presets["midnight"])
+w:apply_theme(kyri.presets["rose"])</code></pre>
+
+				<h3>partial override</h3>
+				<p>pass any subset of theme keys, only those colors change:</p>
+				<pre><code>w:apply_theme({ accent = Color3.fromRGB(255, 80, 80) })
+w:apply_theme({ bg = Color3.fromRGB(5, 5, 8), accent = Color3.fromRGB(80, 220, 120) })</code></pre>
+
+				<h3>theme keys</h3>
+				<table>
+					<thead>
+						<tr><th>key</th><th>what it affects</th></tr>
+					</thead>
+					<tbody>
+						<tr><td>bg</td><td>main window background</td></tr>
+						<tr><td>container</td><td>header bar, sidebar</td></tr>
+						<tr><td>element</td><td>buttons, rows, inputs</td></tr>
+						<tr><td>hover</td><td>hover state color</td></tr>
+						<tr><td>active</td><td>active state color</td></tr>
+						<tr><td>accent</td><td>highlights, fill, indicators</td></tr>
+						<tr><td>text</td><td>primary text</td></tr>
+						<tr><td>subtext</td><td>secondary text, labels</td></tr>
+						<tr><td>border</td><td>UIStroke borders</td></tr>
+					</tbody>
+				</table>
+
+				<div class="admonition admonition-info">
+					<div class="admonition-title">settings tab</div>
+					<p>the auto-generated Settings tab includes a preset dropdown and individual color pickers for every theme property.</p>
+				</div>
+			</section>
+
+			<section id="config">
+				<h2>config system</h2>
+
+				<p>elements with a <code>flag</code> string are saved/loaded automatically. a Settings tab is created with save/load UI built in.</p>
+
+				<pre><code>-- auto-load a config on startup
+local w = kyri.new("title", { GameName = "MyGame", AutoLoad = "default" })
+
+-- read a flag value
+local speed = w.flags.ws
+
+-- set a value and fire its callback
+w.flags.ws_set(100, true)</code></pre>
+
+				<div class="admonition admonition-info">
+					<div class="admonition-title">info</div>
+					<p>configs are stored per-game using GameName. Color3 values serialize correctly.</p>
+				</div>
+			</section>
+
+			<section id="complete-example">
+				<h2>complete example</h2>
+				<pre><code>local kyri = loadstring(game:HttpGet("https://raw.githubusercontent.com/Justanewplayer19/KyriLib/refs/heads/main/source.lua"))()
+
+local w = kyri.new("prison life", {
+    GameName = "PrisonLife",
+    AutoLoad = "default"
+})
+
+local main = w:tab("Main", "sword")
+local misc = w:tab("Misc", "settings")
+
+main:section("movement")
+
+main:toggle("fly", false, function(state)
+    w:notify("fly", state and "on" or "off", 2)
+end, "fly")
+
+main:slider("walkspeed", 16, 500, 16, function(val)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = val
+end, "ws")
+
+main:slider("jump power", 50, 500, 50, function(val)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = val
+end, "jp")
+
+main:space()
+main:section("teleport")
+
+main:dropdown("location", {"spawn", "prison", "criminal base"}, "spawn", function(val)
+    w:notify("teleport", "going to " .. val, 2)
+end)
+
+misc:section("visual")
+
+misc:colorpicker("accent color", kyri.theme.accent, function(c)
+    w:accent(c)
+end, "accent")
+
+misc:space()
+misc:section("theme presets")
+misc:button("midnight", function() w:apply_theme(kyri.presets["midnight"]) end)
+misc:button("rose", function() w:apply_theme(kyri.presets["rose"]) end)
+misc:button("default", function() w:apply_theme(kyri.presets["kyri"]) end)</code></pre>
+		</section>
+		</main>
+	</div>
+
+	<script>
+		function toggleSidebar() {
+			const sidebar = document.querySelector('.sidebar');
+			const overlay = document.querySelector('.mobile-overlay');
+			sidebar.classList.toggle('active');
+			overlay.classList.toggle('active');
+			document.body.classList.toggle('sidebar-open', sidebar.classList.contains('active'));
+		}
+
+		function toggleTheme() {
+			document.body.classList.toggle('dark');
+			const button = document.querySelector('.theme-toggle');
+			button.textContent = document.body.classList.contains('dark') ? 'night night' : 'good morning';
+		}
+
+		document.addEventListener('DOMContentLoaded', function() {
+			document.documentElement.style.background = '';
+			document.documentElement.style.colorScheme = '';
+			if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				document.body.classList.add('dark');
+				document.querySelector('.theme-toggle').textContent = 'night night';
+			}
+		});
+
+		window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+			document.body.classList.toggle('dark', e.matches);
+			document.querySelector('.theme-toggle').textContent = e.matches ? 'night night' : 'good morning';
+		});
+
+		document.querySelectorAll('pre code').forEach((block) => {
+			const pre = block.parentElement;
+			const wrapper = document.createElement('div');
+			wrapper.className = 'pre-wrapper';
+			pre.parentNode.insertBefore(wrapper, pre);
+			wrapper.appendChild(pre);
+
+			const button = document.createElement('button');
+			button.className = 'copy-button';
+			
+			const icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+			icon.setAttribute('class', 'copy-icon');
+			icon.setAttribute('viewBox', '0 0 24 24');
+			icon.setAttribute('fill', 'none');
+			icon.setAttribute('stroke', 'currentColor');
+			icon.setAttribute('stroke-width', '2');
+			icon.innerHTML = '<rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>';
+			
+			button.appendChild(icon);
+			
+			button.addEventListener('click', async () => {
+				const code = block.textContent;
+				try {
+					await navigator.clipboard.writeText(code);
+					button.classList.add('copied');
+					icon.innerHTML = '<path d="M20 6L9 17l-5-5"/>';
+					setTimeout(() => {
+						button.classList.remove('copied');
+						icon.innerHTML = '<rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>';
+					}, 2000);
+				} catch (err) {
+					console.error('failed to copy');
+				}
+			});
+			
+			wrapper.appendChild(button);
+		});
+
+		document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+			anchor.addEventListener('click', function (e) {
+				e.preventDefault();
+				const id = this.getAttribute('href').slice(1);
+				const target = document.getElementById(id);
+				if (target) {
+					target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+					setActive(id);
+					if (window.innerWidth <= 996) {
+						toggleSidebar();
+					}
+				}
+			});
+		});
+
+		const sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+		function setActive(id) {
+			sidebarLinks.forEach(link => {
+				link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+			});
+		}
+
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					setActive(entry.target.getAttribute('id'));
+				}
+			});
+		}, {
+			rootMargin: '-20% 0px -75% 0px',
+			threshold: 0
+		});
+
+		document.querySelectorAll('section').forEach(section => observer.observe(section));
+	</script>
+</body>
+</html
