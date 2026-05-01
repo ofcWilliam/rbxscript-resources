@@ -13,7 +13,7 @@ Modern UI library for Roblox executor scripts. Clean dark theme, smooth animatio
 ## Installation
 
 ```lua
-local kyri = loadstring(game:HttpGet("https://raw.githubusercontent.com/Justanewplayer19/KyriLib/refs/heads/main/source.lua"))()
+local kyri = loadstring(game:HttpGet("https://raw.githubusercontent.com/ofcWilliam/rbxscript-resources/refs/heads/main/Backup/UILibs/KyriLib/source.lua"))()
 ```
 
 ## Quick Start
@@ -163,7 +163,7 @@ Press `RightControl` to show/hide the window.
 ## Example
 
 ```lua
-local kyri = loadstring(game:HttpGet("https://raw.githubusercontent.com/Justanewplayer19/KyriLib/refs/heads/main/source.lua"))()
+local kyri = loadstring(game:HttpGet("https://raw.githubusercontent.com/ofcWilliam/rbxscript-resources/refs/heads/main/Backup/UILibs/KyriLib/source.lua"))()
 
 local w = kyri.new("prison life", {
     GameName = "PrisonLife",
