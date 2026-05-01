@@ -1,3 +1,6 @@
+-- OFFICIAL KYRILIB SOURCE
+-- SMALL EDITS TO MAKE IT WORK IN CASE OF DELETION
+
 local kyri = {}
 local gs = cloneref or function(o) return o end
 
