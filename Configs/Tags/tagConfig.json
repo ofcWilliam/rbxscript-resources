@@ -15,9 +15,13 @@
     "102187243": {
       "Title": "CREATOR",
       "Color": [255, 0, 0],
-      "Animated": false,
+      "Animated": true,
       "Icon": "rbxassetid://10734950309",
-      "BackgroundImage": "https://raw.githubusercontent.com/ofcWilliam/rbxscript-resources/refs/heads/main/Images/tagSystem/06bb79b09356eab20d22eae0e65ccded.gif"
+      "BackgroundImage": "https://raw.githubusercontent.com/ofcWilliam/rbxscript-resources/refs/heads/main/Images/tagSystem/ezgif-6f0068becd8bd97c.png",
+      "IsSpriteSheet": true,
+      "SpriteCols": 8,
+      "SpriteRows": 6,
+      "FrameCount": 48
     },
     "5090509370": {
       "Title": "Monkey",
