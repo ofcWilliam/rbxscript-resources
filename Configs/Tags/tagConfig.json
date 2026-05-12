@@ -1,0 +1,23 @@
+{
+  "Settings": {
+    "TagOffset": [0, 4, 0],
+    "CornerRadius": 10
+  },
+  "Default": {
+    "Title": "Script User",
+    "Color": [200, 200, 200],
+    "Animated": false,
+    "Icon": "rbxassetid://0",
+    "BackgroundImage": "rbxassetid://0",
+    "BackgroundTransparency": 0.2
+  },
+  "Overrides": {
+    "102187243": {
+      "Title": "CREATOR",
+      "Color": [255, 0, 0],
+      "Animated": true,
+      "Icon": "rbxassetid://10734950309",
+      "BackgroundImage": "rbxassetid://10734892402"
+    }
+  }
+}
