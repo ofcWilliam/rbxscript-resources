@@ -11,9 +11,16 @@
     "BackgroundImage": "rbxassetid://0",
     "BackgroundTransparency": 0.2
   },
-  "Overrides": {
-    "5090509370": {
+  "User": {
+    "102187243": {
       "Title": "CREATOR",
+      "Color": [255, 0, 0],
+      "Animated": true,
+      "Icon": "rbxassetid://10734950309",
+      "BackgroundImage": "rbxassetid://10734892402"
+    },
+    "5090509370": {
+      "Title": "Monkey",
       "Color": [255, 0, 0],
       "Animated": true,
       "Icon": "rbxassetid://10734950309",
