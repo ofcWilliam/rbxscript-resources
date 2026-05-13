@@ -15,7 +15,7 @@
       "Visuals": {
         "StrokeThickness": 5,
         "StrokeColor": [255, 0, 0],
-        "UseGradient": true,
+        "UseGradient": false,
         "GradientColors": [[255, 0, 0], [0, 0, 255]], 
         "GradientRotation": 45
       },
