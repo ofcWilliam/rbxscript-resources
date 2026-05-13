@@ -13,7 +13,7 @@
       "BackgroundTransparency": 0.2,
       
       "Visuals": {
-        "StrokeThickness": 2,
+        "StrokeThickness": 5,
         "UseGradient": true,
         "GradientColors": [[255, 0, 0], [0, 0, 255]], 
         "GradientRotation": 45
