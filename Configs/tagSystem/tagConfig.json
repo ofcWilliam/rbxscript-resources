@@ -20,7 +20,7 @@
       },
       
       "Animation": {
-        "IsSpriteSheet": true,
+        "IsSpriteSheet": false,
         "SpriteCols": 8,
         "SpriteRows": 6,
         "FrameCount": 48,
