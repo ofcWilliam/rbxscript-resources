@@ -1,1 +1,88 @@
-{}
+{
+    "11427503832": {
+        "tagType": "PredAlert",
+        "metadata": {
+            "addedBy": "System",
+            "createdAt": "2026-10-10",
+            "lastUpdated": "2026-10-10"
+        },
+        "alts": [],
+        "records": [
+            {
+                "reason": "Crazy Girl",
+                "info": "Crazy E Girl"
+            },
+            {
+                "reason": "Condo Games",
+                "info": "Has been found to play condo games"
+            }
+        ]
+    },
+
+
+    "2016429843": {
+        "tagType": "PredAlert",
+        "metadata": {
+            "addedBy": "System",
+            "createdAt": "2026-10-10",
+            "lastUpdated": "2026-10-10"
+        },
+        "alts": [],
+        "records": [
+            {
+                "reason": "Predator Supporter",
+                "info": "Supports predators and protects them."
+            }
+        ]
+    },
+
+
+    "11036308199": {
+        "tagType": "PredAlert",
+        "metadata": {
+            "addedBy": "System",
+            "createdAt": "2026-10-10",
+            "lastUpdated": "2026-10-10"
+        },
+        "alts": [
+            "11013325311",
+            "10999689113",
+            "10762164059",
+            "11034243674",
+            "10969551922",
+            "7705710382",
+            "6043897650",
+            "11007761412",
+            "11728616752",
+            "11565892854"
+        ],
+        "records": [
+            {
+                "reason": "Predator",
+                "info": "Online Pred, looking for underage girl"
+            }
+        ]
+    },
+
+
+    "11729871417": { 
+        "tagType": "PredAlert",
+        "metadata": {
+            "addedBy": "System",
+            "createdAt": "2026-10-10",
+            "lastUpdated": "2026-10-10"
+        },
+        "alts": [
+            "10969496654",
+            "11175541468",
+            "11328149905",
+            "10910383996"
+        ],
+        "records": [
+            {
+                "reason": "Predator",
+                "info": "Online Pred, looking for underage girl or freshly 18 girls whilst being 35 years old"
+            }
+        ]
+    }
+}
