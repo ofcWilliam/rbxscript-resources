@@ -15,7 +15,7 @@
         ]
     },
     "2016429843": {
-        "tagType": "PredAlert",
+        "tagType": "MinorAlert",
         "metadata": {
             "addedBy": "System",
             "createdAt": "2026-10-10",
